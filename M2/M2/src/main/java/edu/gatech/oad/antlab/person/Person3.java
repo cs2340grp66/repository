@@ -43,6 +43,10 @@ public class Person3 {
 	 */
 	private String calc(String input) {
 	  //Person 3 put your implementation here
-	  return null;
+	  String temp = "";
+	  for (int i = 0; i < input.length(); i++) {
+	    temp = temp + input.substring(input.length() - 1 - i, input.length() - i);
+	  }
+	  return temp;
 	}
 }

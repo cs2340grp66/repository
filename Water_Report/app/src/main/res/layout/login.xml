@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/welcome_screen"
+    android:weightSum="1"
+    android:baselineAligned="false">
+
+    <Button
+        android:text="@string/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_button"
+        android:layout_alignBaseline="@+id/login_button"
+        android:layout_alignBottom="@+id/login_button"
+        android:layout_alignRight="@+id/welcome_text"
+        android:layout_alignEnd="@+id/welcome_text"
+        android:layout_marginRight="39dp"
+        android:layout_marginEnd="39dp" />
+
+    <Button
+        android:text="@string/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_button"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/welcome_text"
+        android:layout_alignStart="@+id/welcome_text"
+        android:layout_marginBottom="110dp" />
+
+    <TextView
+        android:text="@string/welcome_text"
+        android:id="@+id/welcome_text"
+        tools:text="Please Login/Register "
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_height="43dp"
+        android:layout_width="wrap_content"
+        android:textSize="35sp"
+        android:layout_marginTop="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="@string/user_name"
+        android:layout_height="20sp"
+        android:id="@+id/user_name_text"
+        android:layout_width="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_below="@+id/welcome_text"
+        android:layout_alignLeft="@+id/welcome_text"
+        android:layout_alignStart="@+id/welcome_text"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:text="@string/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_text"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_above="@+id/password_input"
+        android:layout_alignLeft="@+id/password_input"
+        android:layout_alignStart="@+id/password_input"
+        android:layout_marginBottom="11dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/password_input"
+        android:hint="@string/please_enter_password"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/user_name_input"
+        android:layout_alignStart="@+id/user_name_input" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/user_name_input"
+        android:hint="@string/please_enter_user_name"
+        android:layout_below="@+id/user_name_text"
+        android:layout_alignLeft="@+id/user_name_text"
+        android:layout_alignStart="@+id/user_name_text" />
+
+</RelativeLayout>

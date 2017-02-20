@@ -40,7 +40,7 @@
         android:id="@+id/sign_in"
         android:layout_marginBottom="33dp"
         android:layout_above="@+id/register_button"
-        android:layout_centerHorizontal="true"
-        android:onClick="toLoginLayout"/>
+        android:layout_centerHorizontal="true">
+    </Button>
 
 </RelativeLayout>

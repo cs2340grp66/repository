@@ -40,7 +40,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/password_input"
-        android:hint="@string/enter_password"
+        android:hint=""
         android:layout_marginLeft="31dp"
         android:layout_marginStart="31dp"
         android:layout_below="@+id/password_text"
@@ -53,7 +53,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/user_name_input"
-        android:hint="@string/enter_user_name"
+        android:hint=""
         android:layout_marginBottom="48dp"
         android:layout_above="@+id/password_text"
         android:layout_alignLeft="@+id/password_text"
@@ -67,7 +67,9 @@
         android:layout_marginTop="51dp"
         android:layout_below="@+id/password_input"
         android:layout_centerHorizontal="true"
-        android:onClick="login"/>
+        android:onClick="login_button"
+
+        />
 
     <ImageButton
         android:layout_width="wrap_content"

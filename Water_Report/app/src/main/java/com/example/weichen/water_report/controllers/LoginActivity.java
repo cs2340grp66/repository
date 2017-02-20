@@ -21,10 +21,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private ImageButton _goBack;
 
-    private User_Infor user_infor;
-
-    private boolean result = true;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,41 +36,9 @@ public class LoginActivity extends AppCompatActivity {
         _login = (Button) findViewById(R.id.login_button);
         _goBack = (ImageButton) findViewById(R.id.go_back_button);
 
-
-
-
-    }
-
-    /**
-     * Us to test the password and username
-     */
-    public void login(View view ) {
-        if (passWord == null || userName == null) {
-            userName.setError("User Name can't be empty!");
-            passWord.setError("Password can't be empty!");
-        } else {
-//            result = user_infor.checkLogin(userName.getText().toString(), passWord.getText().toString());
-
-            if (userName.getText().toString().equals("user")|| passWord.getText().toString().equals("pass")) {
-                _login.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intents = new Intent(LoginActivity.this, WelcomActivity.class);
-                        startActivity(intents);
-                    }
-                });
-            } else {
-                passWord.setError("User or Password may not be correct!");
-            }
-        }
-    }
-
-
-    /**
-     * when go back was click if sent it back to initial screen
-     * @param view
-     */
-    public void goBack(View view) {
+        /*
+            using to go back to initial screen from login
+         */
         _goBack.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -85,6 +49,21 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intents);
             }
         });
+    }
+
+    public void login_button(View v) {
+        if (passWord == null || userName == null) {
+            userName.setError("User Name can't be empty!");
+            passWord.setError("Password can't be empty!");
+        } else {
+            if (userName.getText().toString().equals("user") && passWord.getText().toString().equals("pass")) {
+                Intent intents = new Intent(LoginActivity.this, WelcomActivity.class);
+                startActivity(intents);
+            } else {
+                passWord.setError("User or Password may not be correct!");
+            }
+
+        }
 
     }
 

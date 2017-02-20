@@ -23,9 +23,11 @@ public class WelcomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcom);
 
         logout = (Button) findViewById(R.id.logout);
-    }
 
-    public void logout(View view) {
+
+        /*
+            using to logout and return to initial screen.
+         */
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,4 +36,5 @@ public class WelcomActivity extends AppCompatActivity {
             }
         });
     }
+
 }

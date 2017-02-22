@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
@@ -10,4 +11,82 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.weichen.water_report.controllers.RegisterActivity">
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:id="@+id/go_back_r_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/first_name_r_input"
+        android:layout_marginTop="13dp"
+        android:text="First Name"
+        android:layout_below="@+id/password_r_input"
+        android:layout_toRightOf="@+id/go_back_r_button"
+        android:layout_toEndOf="@+id/go_back_r_button" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="User Name"
+        android:ems="10"
+        android:id="@+id/user_name_r_input"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/go_back_r_button"
+        android:layout_alignLeft="@+id/password_r_input"
+        android:layout_alignStart="@+id/password_r_input" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Last Name"
+        android:ems="10"
+        android:id="@+id/last_name_r_input"
+        android:layout_below="@+id/first_name_r_input"
+        android:layout_alignLeft="@+id/first_name_r_input"
+        android:layout_alignStart="@+id/first_name_r_input"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/password_r_input"
+        android:text="Password"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/user_name_r_input"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Email"
+        android:ems="10"
+        android:id="@+id/email_r_input"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/last_name_r_input"
+        android:layout_alignLeft="@+id/last_name_r_input"
+        android:layout_alignStart="@+id/last_name_r_input" />
+
+    <Button
+        android:text="Register and Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_Account_r_Button"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/email_r_input"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

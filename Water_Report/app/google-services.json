@@ -1,0 +1,51 @@
+{
+  "project_info": {
+    "project_number": "574873814984",
+    "firebase_url": "https://water-report-cf485.firebaseio.com",
+    "project_id": "water-report-cf485",
+    "storage_bucket": "water-report-cf485.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574873814984:android:ecbf39adbf23ba0d",
+        "android_client_info": {
+          "package_name": "com.example.weichen.water_report"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574873814984-ug14g0l07k6t66n703erubu6v1111h9u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.weichen.water_report",
+            "certificate_hash": "59f84c36d4c8060fb5615b1f5606a822052b0677"
+          }
+        },
+        {
+          "client_id": "574873814984-fv10gua18823rphh5c67vb7ruq9okp55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574873814984-fv10gua18823rphh5c67vb7ruq9okp55.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

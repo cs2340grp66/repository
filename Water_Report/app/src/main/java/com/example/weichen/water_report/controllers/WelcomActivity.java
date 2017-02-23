@@ -26,12 +26,8 @@ public class WelcomActivity extends AppCompatActivity {
     }
 
     public void logout(View view) {
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 Intent intents = new Intent(WelcomActivity.this, InitialActivity.class);
                 startActivity(intents);
-            }
-        });
+
     }
 }

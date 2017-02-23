@@ -20,7 +20,8 @@
         android:id="@+id/go_back_r_button"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="goBack"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -88,5 +89,6 @@
         android:id="@+id/create_Account_r_Button"
         android:layout_marginTop="33dp"
         android:layout_below="@+id/email_r_input"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="login_and_register"/>
 </RelativeLayout>

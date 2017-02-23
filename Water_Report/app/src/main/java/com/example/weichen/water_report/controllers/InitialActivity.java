@@ -27,14 +27,9 @@ public class InitialActivity extends AppCompatActivity {
      * @param view
      */
     public void toLoginLayout(View view) {
-        _sign_in.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
                 Intent intents = new Intent(InitialActivity.this, LoginActivity.class);
                 startActivity(intents);
-            }
-        });
+
     }
 
     /**
@@ -42,13 +37,8 @@ public class InitialActivity extends AppCompatActivity {
      * @param view
      */
     public void toRegisterLayout(View view) {
-        _register.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
                 Intent intents = new Intent(InitialActivity.this, RegisterActivity.class);
                 startActivity(intents);
-            }
-        });
+
     }
 }

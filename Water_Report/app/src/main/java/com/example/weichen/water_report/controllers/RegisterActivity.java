@@ -61,14 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
      * @param view
      */
     public void toLoginLayout(View view) {
-        create_Account_r_Button.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent intents = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intents);
-            }
-        });
+        Intent intents = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intents);
     }
 
     /**
@@ -77,16 +71,17 @@ public class RegisterActivity extends AppCompatActivity {
      * @param view
      */
     public void goBack(View view) {
-        goBack.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent intents = new Intent(RegisterActivity.this, InitialActivity.class);
-                passWord = null;
-                userName = null;
-                startActivity(intents);
-            }
-        });
-
+        Intent intents = new Intent(RegisterActivity.this, InitialActivity.class);
+        passWord = null;
+        userName = null;
+        startActivity(intents);
     }
-}
+
+    public void login_and_register() {
+        Intent intents = new Intent(RegisterActivity.this, WelcomActivity.class);
+        passWord = null;
+        userName = null;
+        startActivity(intents);
+    }
+ }
+

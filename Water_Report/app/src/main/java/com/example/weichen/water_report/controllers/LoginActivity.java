@@ -56,13 +56,9 @@ public class LoginActivity extends AppCompatActivity {
 //            result = user_infor.checkLogin(userName.getText().toString(), passWord.getText().toString());
 
             if (userName.getText().toString().equals("user")|| passWord.getText().toString().equals("pass")) {
-                _login.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+
                         Intent intents = new Intent(LoginActivity.this, WelcomActivity.class);
                         startActivity(intents);
-                    }
-                });
             } else {
                 passWord.setError("User or Password may not be correct!");
             }
@@ -75,16 +71,10 @@ public class LoginActivity extends AppCompatActivity {
      * @param view
      */
     public void goBack(View view) {
-        _goBack.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
                 Intent intents = new Intent(LoginActivity.this, InitialActivity.class);
                 passWord = null;
                 userName = null;
                 startActivity(intents);
-            }
-        });
 
     }
 

@@ -30,6 +30,8 @@ public class WelcomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcom);
 
+
+
         userAuth = FirebaseAuth.getInstance();
 
         if (userAuth.getCurrentUser() == null) {
@@ -42,9 +44,13 @@ public class WelcomActivity extends AppCompatActivity {
         user = userAuth.getCurrentUser();
 
         userEmail = (TextView) findViewById(R.id.user_email);
-        userEmail.setText("Hello: " + user.getDisplayName());
+        userEmail.setText("Hello: " + user.getEmail());
     }
 
+    /**
+     * use to logout a use, will move to initial activity, and logout from database
+     * @param view
+     */
     public void logout(View view) {
         userAuth.signOut();
         Intent intents = new Intent(WelcomActivity.this, InitialActivity.class);

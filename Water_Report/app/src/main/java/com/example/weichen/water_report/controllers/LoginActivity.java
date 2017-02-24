@@ -40,6 +40,11 @@ public class LoginActivity extends AppCompatActivity {
 
         loginAuth = FirebaseAuth.getInstance();
 
+        if (loginAuth.getCurrentUser() != null) {
+            Intent intents = new Intent(LoginActivity.this, WelcomActivity.class);
+            startActivity(intents);
+        }
+
         userName = (EditText) findViewById(R.id.user_name_input);
         if (userName.getText().toString().length() == 0) {
             userName.setError("User Name can't be empty!");
@@ -84,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent intents = new Intent(LoginActivity.this, WelcomActivity.class);
                                 startActivity(intents);
                             } else {
-                                Toast.makeText(LoginActivity.this, "Email and Password are not match!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Email and Password are not match!", Toast.LENGTH_LONG).show();
                             }
 
                         }

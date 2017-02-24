@@ -49,12 +49,12 @@ public class RegisterActivity extends AppCompatActivity {
             _userName.setError("Email can't be empty!");
 
         _passWord = (EditText) findViewById(R.id.password_r_input);
-        if (_passWord.getText().toString().length() == 0)
-            _passWord.setError("Password can't be empty!");
+        if (_passWord.getText().toString().length() < 6)
+            _passWord.setError("Least have 6 characters");
 
         _reEnterPW = (EditText) findViewById(R.id.reEnter_password_r_input);
-        if (_reEnterPW.getText().toString().length() == 0)
-            _reEnterPW.setError("Password can't be empty!");
+        if (_reEnterPW.getText().toString().length() < 6)
+            _reEnterPW.setError("Least have 6 characters");
 
 
         create_Account_r_Button = (Button) findViewById(R.id.create_Account_r_Button);
@@ -91,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
         String userName = _userName.getText().toString();
         String password = _passWord.getText().toString();
         String reEnterPW = _reEnterPW.getText().toString();
+
         if (password.equals(reEnterPW)) {
             mAuth.createUserWithEmailAndPassword(userName, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

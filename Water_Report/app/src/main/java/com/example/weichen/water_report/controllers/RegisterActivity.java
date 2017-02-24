@@ -2,25 +2,36 @@ package com.example.weichen.water_report.controllers;
 
 import android.content.Intent;
 import android.icu.lang.UCharacterEnums;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.weichen.water_report.R;
 import com.example.weichen.water_report.model.User_Infor;
 
 import com.example.weichen.water_report.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText userName;
-    private EditText passWord;
-    private EditText firstName;
-    private EditText lastName;
-    private EditText email;
+    private EditText _userName;
+    private EditText _passWord;
+    private EditText _reEnterPW;
+
+    private FirebaseAuth mAuth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
+
+
 
     private Button create_Account_r_Button;
 
@@ -31,29 +42,25 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        userName = (EditText) findViewById(R.id.user_name_r_input);
-        if (userName.getText().toString().length() == 0)
-            userName.setError("User Name can't be empty!");
+        mAuth = FirebaseAuth.getInstance();
 
-        passWord = (EditText) findViewById(R.id.password_r_input);
-        if (passWord.getText().toString().length() == 0)
-            passWord.setError("Password can't be empty!");
+        _userName = (EditText) findViewById(R.id.user_name_r_input);
+        if (_userName.getText().toString().length() == 0)
+            _userName.setError("Email can't be empty!");
 
-        firstName = (EditText) findViewById(R.id.first_name_r_input);
-        if (firstName.getText().toString().length() == 0)
-            firstName.setError("Password can't be empty!");
+        _passWord = (EditText) findViewById(R.id.password_r_input);
+        if (_passWord.getText().toString().length() == 0)
+            _passWord.setError("Password can't be empty!");
 
-        lastName = (EditText) findViewById(R.id.last_name_r_input);
-        if (lastName.getText().toString().length() == 0)
-            lastName.setError("Password can't be empty!");
+        _reEnterPW = (EditText) findViewById(R.id.reEnter_password_r_input);
+        if (_reEnterPW.getText().toString().length() == 0)
+            _reEnterPW.setError("Password can't be empty!");
 
-        email = (EditText) findViewById(R.id.email_r_input);
-        if (email.getText().toString().length() == 0)
-            email.setError("Password can't be empty!");
 
         create_Account_r_Button = (Button) findViewById(R.id.create_Account_r_Button);
 
         goBack = (ImageButton) findViewById(R.id.go_back_r_button);
+
     }
 
     /**
@@ -65,6 +72,8 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intents);
     }
 
+
+
     /**
      * Code for the back button on the registration
      *
@@ -72,16 +81,48 @@ public class RegisterActivity extends AppCompatActivity {
      */
     public void goBack(View view) {
         Intent intents = new Intent(RegisterActivity.this, InitialActivity.class);
-        passWord = null;
-        userName = null;
+        _passWord = null;
+        _userName = null;
         startActivity(intents);
     }
 
-    public void login_and_register() {
-        Intent intents = new Intent(RegisterActivity.this, WelcomActivity.class);
-        passWord = null;
-        userName = null;
-        startActivity(intents);
+
+    public void login_and_register(View viwq) {
+        String userName = _userName.getText().toString();
+        String password = _passWord.getText().toString();
+        String reEnterPW = _reEnterPW.getText().toString();
+        if (password.equals(reEnterPW)) {
+            mAuth.createUserWithEmailAndPassword(userName, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                Intent intents = new Intent(RegisterActivity.this, WelcomActivity.class);
+                                startActivity(intents);
+                            } else {
+                                Toast.makeText(RegisterActivity.this, "Registered Fail", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
+        } else {
+            _reEnterPW.setError("Re-enter Password are not match ");
+        }
     }
+
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        if (mAuthListener != null) {
+//            mAuth.removeAuthStateListener(mAuthListener);
+//        }
+//    }
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        mAuth.addAuthStateListener(mAuthListener);
+//    }
  }
 

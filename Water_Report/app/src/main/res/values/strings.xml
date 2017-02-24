@@ -18,4 +18,6 @@
     <string name="hello">Hello:</string>
     <string name="enter_password">Enter Password</string>
     <string name="enter_user_name">Enter User Name</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_e_mail">Enter e-mail</string>
 </resources>

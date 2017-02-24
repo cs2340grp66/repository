@@ -31,8 +31,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         userName = (EditText) findViewById(R.id.user_name_input);
-        if (userName.getText().toString().length() == 0)
+        if (userName.getText().toString().length() == 0) {
             userName.setError("User Name can't be empty!");
+        }
         passWord = (EditText) findViewById(R.id.password_input);
         if (passWord.getText().toString().length() == 0)
             passWord.setError("Password can't be empty!");

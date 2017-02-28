@@ -63,17 +63,26 @@
         android:hint="Password Again"
         tools:ignore="HardcodedText" />
 
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/classes_spinner"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/reEnter_password_r_input"
+        android:layout_toRightOf="@+id/go_back_r_button"
+        tools:ignore="RtlHardcoded"
+        android:layout_alignRight="@+id/reEnter_password_r_input"
+        android:layout_alignEnd="@+id/reEnter_password_r_input" />
+
     <Button
         android:text="Register and Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/create_Account_r_Button"
-        android:layout_marginTop="54dp"
         android:onClick="login_and_register"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_below="@+id/reEnter_password_r_input"
+        tools:ignore="HardcodedText"
+        android:layout_below="@+id/classes_spinner"
         android:layout_alignLeft="@+id/reEnter_password_r_input"
         android:layout_alignStart="@+id/reEnter_password_r_input"
-        tools:ignore="HardcodedText" />
+        android:layout_marginTop="42dp" />
 </RelativeLayout>

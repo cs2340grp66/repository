@@ -11,16 +11,27 @@ import com.example.weichen.water_report.R;
 import com.example.weichen.water_report.model.User_Infor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 public class WelcomActivity extends AppCompatActivity {
 
     private Button logout;
-
+    private Button edit_profile;
     private TextView userEmail;
 
     private FirebaseAuth userAuth;
 
     private FirebaseUser user;
+
+    private DatabaseReference databaseReference;
+
+
 
 
 
@@ -31,20 +42,40 @@ public class WelcomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcom);
 
 
-
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         userAuth = FirebaseAuth.getInstance();
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (userAuth.getCurrentUser() == null) {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
 
-        logout = (Button) findViewById(R.id.logout);
 
-        user = userAuth.getCurrentUser();
+        logout = (Button) findViewById(R.id.logout);
+        edit_profile = (Button) findViewById(R.id.profile_button);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         userEmail = (TextView) findViewById(R.id.user_email);
-        userEmail.setText("Hello: " + user.getEmail());
+
+        databaseReference = databaseReference.child("user").child(user.getUid());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.child("userName").getValue(String.class);
+                userEmail.setText("Hello: " + name);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
     /**
@@ -53,8 +84,17 @@ public class WelcomActivity extends AppCompatActivity {
      */
     public void logout(View view) {
         userAuth.signOut();
-        Intent intents = new Intent(WelcomActivity.this, InitialActivity.class);
-        startActivity(intents);
+        startActivity(new Intent(WelcomActivity.this, InitialActivity.class));
 
     }
+
+    /**
+     * move to profile activity
+     * @param view view
+     */
+    public void edit_profile(View view) {
+        startActivity(new Intent(WelcomActivity.this, PersonalProfileActivity.class));
+    }
+
+
 }

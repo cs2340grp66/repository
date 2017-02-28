@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.weichen.water_report.R;
@@ -25,20 +27,25 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText _userName;
     private EditText _passWord;
     private EditText _reEnterPW;
+    private Spinner _classes;
 
     private FirebaseAuth mAuth;
-
     private FirebaseAuth.AuthStateListener mAuthListener;
-
     private DatabaseReference databaseReference;
 
     private Button create_Account_r_Button;
     private ImageButton goBack;
+
+    private User_Infor user;
+
+    private static String[] classes = new String[]{"USER", "WORKER","MANAGER","ADMINISTRATOR"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
-
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
 
         if (mAuth.getCurrentUser() != null) {
             Intent intents = new Intent(RegisterActivity.this, WelcomActivity.class);
@@ -65,6 +72,13 @@ public class RegisterActivity extends AppCompatActivity {
         _reEnterPW = (EditText) findViewById(R.id.reEnter_password_r_input);
         if (_reEnterPW.getText().toString().length() < 6)
             _reEnterPW.setError("Least have 6 characters");
+
+
+
+        _classes = (Spinner) findViewById(R.id.classes_spinner);
+        ArrayAdapter<String> classAdpt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, classes);
+        classAdpt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        _classes.setAdapter(classAdpt);
 
 
         create_Account_r_Button = (Button) findViewById(R.id.create_Account_r_Button);
@@ -107,7 +121,12 @@ public class RegisterActivity extends AppCompatActivity {
         String userName = _userName.getText().toString();
         String password = _passWord.getText().toString();
         String reEnterPW = _reEnterPW.getText().toString();
+        String classes = (String) _classes.getSelectedItem();
 
+
+        user = new User_Infor(userName, " ", " ", classes);
+
+        FirebaseUser fb_user;
 
         if (password.equals(reEnterPW)) {
             mAuth.createUserWithEmailAndPassword(userName, password)
@@ -115,13 +134,14 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                FirebaseUser fb_user = FirebaseAuth.getInstance().getCurrentUser();
+                                databaseReference.child("user").child(fb_user.getUid()).setValue(user);
                                 Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
-                                Intent intents = new Intent(RegisterActivity.this, WelcomActivity.class);
-                                startActivity(intents);
+                                startActivity(new Intent(RegisterActivity.this, WelcomActivity.class));
                             } else {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                     _userName.setError("User with this email already exist.");
-                                    Toast.makeText(RegisterActivity.this, "Registered Fail", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this, "Registered Fail! \nUser with this email already exist.", Toast.LENGTH_LONG).show();
                                 } else {
                                     Toast.makeText(RegisterActivity.this, "Registered Fail", Toast.LENGTH_SHORT).show();
                                 }

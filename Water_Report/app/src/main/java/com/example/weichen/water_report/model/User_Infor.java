@@ -3,6 +3,7 @@ package com.example.weichen.water_report.model;
 import android.os.StrictMode;
 import android.widget.EditText;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,75 +12,34 @@ import java.util.Set;
  * Created by weichen on 2/10/17.
  */
 
-public class User_Infor {
+public class User_Infor implements Serializable {
+
+    public String userName;
+    public String phoneNum;
+    public String address;
+    public String classes;
 
     /**
-     * This is hashmap to store user information
+     * the default constructor
      */
-    private Map<String, String > _users = new HashMap<>();
-
-    /**
-     * to store the current user
-     */
-    private String currentUser;
+    public User_Infor(){};
 
 
     /**
-     * the default Constructs
+     * constructor for User_infor class
+     * @param userName
+     * @param phoneNum
+     * @param address
      */
-    public User_Infor() {
-        _users.put("user","pass");
-    }
-
-    /**
-     * Constructs chaining
-     * @param userName the username input
-     * @param passWord the password input
-     */
-    public User_Infor(String userName, String passWord) {
-        this();
-        _users.put(userName,passWord);
+    public User_Infor(String userName, String phoneNum, String address, String classes) {
+        this.userName = userName;
+        this.phoneNum = phoneNum;
+        this.address = address;
+        this.classes = classes;
     }
 
 
-    /**
-     * use to checking that the username and password
-     * @param userName the input of username
-     * @param passWord the input of password
-     * @return return Ture if username exits and match to the password and set currentUser to
-     *         userName, otherwise return flase
-     */
-    public boolean checkLogin(String userName, String passWord) {
-        if (_users.containsKey(userName)) {
-            if (_users.containsValue(passWord)) {
-                currentUser = userName;
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
 
-    /**
-     * getting the current username
-     * @return the current username
-     */
-    public String getCurrentUse() {
-        return currentUser;
-    }
-
-
-    /**
-     * using to register a new user
-     * using to register a new user
-     * @param username the username
-     * @param password the password
-     */
-    public void addUser(String username, String password) {
-        _users.put(username, password);
-    }
 
 
 }

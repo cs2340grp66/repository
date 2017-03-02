@@ -24,7 +24,9 @@
         <activity android:name=".controllers.WelcomActivity" />
         <activity android:name=".controllers.RegisterActivity" />
         <activity android:name=".controllers.ProfileActivity" />
-        <activity android:name=".controllers.PersonalProfileActivity"></activity>
+        <activity android:name=".controllers.PersonalProfileActivity" />
+        <activity android:name=".controllers.SubmitReport" />
+        <activity android:name=".controllers.ViewReports"></activity>
     </application>
 
 </manifest>

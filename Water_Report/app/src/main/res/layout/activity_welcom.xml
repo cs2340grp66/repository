@@ -43,4 +43,12 @@
         android:onClick="edit_profile"
         android:id="@+id/profile_button" />
 
+    <Button
+        android:text="Submit Report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcom_submit_report"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

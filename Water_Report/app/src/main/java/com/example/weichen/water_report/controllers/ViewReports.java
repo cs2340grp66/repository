@@ -2,6 +2,7 @@ package com.example.weichen.water_report.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.weichen.water_report.R;
 
 public class ViewReports extends AppCompatActivity {
 

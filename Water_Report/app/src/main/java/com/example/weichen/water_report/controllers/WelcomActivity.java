@@ -23,6 +23,7 @@ public class WelcomActivity extends AppCompatActivity {
 
     private Button logout;
     private Button edit_profile;
+    private Button welcom_submit_report;
     private TextView userEmail;
 
     private FirebaseAuth userAuth;
@@ -30,10 +31,6 @@ public class WelcomActivity extends AppCompatActivity {
     private FirebaseUser user;
 
     private DatabaseReference databaseReference;
-
-
-
-
 
 
     @Override
@@ -95,6 +92,15 @@ public class WelcomActivity extends AppCompatActivity {
     public void edit_profile(View view) {
         startActivity(new Intent(WelcomActivity.this, PersonalProfileActivity.class));
     }
+
+    /**
+     * move to the startActivity activity
+     * @param view
+     */
+    public void welcom_submit_report (View view) {
+        startActivity(new Intent(WelcomActivity.this, SubmitReportActivity.class));
+    }
+
 
 
 }

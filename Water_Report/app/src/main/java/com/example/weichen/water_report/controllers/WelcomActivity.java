@@ -98,7 +98,7 @@ public class WelcomActivity extends AppCompatActivity {
      * @param view
      */
     public void welcom_submit_report (View view) {
-        startActivity(new Intent(WelcomActivity.this, SubmitReportActivity.class));
+        startActivity(new Intent(WelcomActivity.this, SubmitReport.class));
     }
 
 

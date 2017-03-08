@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/welcom_submit_report"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick = "welcom_submit_report"/>
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_submit_report"
     android:layout_width="match_parent"
@@ -9,5 +10,115 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.weichen.water_report.controllers.SubmitReport">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/sub_location"
+        android:layout_alignLeft="@+id/sub_location"
+        android:layout_alignStart="@+id/sub_location"
+        android:layout_marginTop="36dp"
+        android:id="@+id/sub_type" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/sub_condition"
+        android:layout_alignLeft="@+id/sub_condition"
+        android:layout_alignStart="@+id/sub_condition"
+        android:layout_marginTop="41dp"
+        android:id="@+id/sub_virus" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="65dp"
+        android:id="@+id/sub_location"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginBottom="37dp"
+        android:id="@+id/sub_contaminant"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/sub_virus"
+        android:layout_alignStart="@+id/sub_virus" />
+
+    <TextView
+        android:text="Virus PPM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sub_condition"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_marginTop="27dp"
+        android:id="@+id/textView5" />
+
+    <TextView
+        android:text="Contaminant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sub_contaminant"
+        android:layout_alignLeft="@+id/sub_contaminant"
+        android:layout_alignStart="@+id/sub_contaminant"
+        android:id="@+id/textView6" />
+
+    <TextView
+        android:text="Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_below="@+id/go_back_r_button_submission"
+        android:layout_alignLeft="@+id/sub_location"
+        android:layout_alignStart="@+id/sub_location" />
+
+    <TextView
+        android:text="Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/sub_location"
+        android:layout_alignLeft="@+id/sub_type"
+        android:layout_alignStart="@+id/sub_type" />
+
+    <TextView
+        android:text="Condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/sub_type"
+        android:layout_alignLeft="@+id/sub_condition"
+        android:layout_alignStart="@+id/sub_condition" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/sub_condition"
+        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/sub_type"
+        android:layout_alignStart="@+id/sub_type" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="?android:attr/actionModeCloseDrawable"
+        android:id="@+id/go_back_r_button_submission"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/textView"
+        android:layout_toStartOf="@+id/textView" />
 
 </RelativeLayout>

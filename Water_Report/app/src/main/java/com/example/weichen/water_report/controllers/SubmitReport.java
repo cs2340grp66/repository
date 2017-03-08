@@ -1,5 +1,6 @@
 package com.example.weichen.water_report.controllers;
 
+import com.example.weichen.water_report.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 

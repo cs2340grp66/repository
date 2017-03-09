@@ -1,9 +1,9 @@
 package com.example.weichen.water_report.controllers;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.weichen.water_report.R;
-import com.example.weichen.water_report.model.User_Infor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,7 +52,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         _userName = (EditText) findViewById(R.id.username_profile_input);

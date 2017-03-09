@@ -1,13 +1,6 @@
 package com.example.weichen.water_report.model;
 
-import android.os.StrictMode;
-import android.widget.EditText;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 /**
  * Created by weichen on 2/10/17.
  */
@@ -37,6 +30,7 @@ public class User_Infor implements Serializable {
         this.address = address;
         this.classes = classes;
     }
+
 
 
 

@@ -44,12 +44,26 @@
         android:id="@+id/profile_button" />
 
     <Button
-        android:text="Submit Report"
+        android:text="@string/submit_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/welcom_submit_report"
-        android:layout_alignParentBottom="true"
+        android:onClick = "welcom_submit_report"
+        android:layout_below="@+id/user_email"
         android:layout_centerHorizontal="true"
-        android:onClick = "welcom_submit_report"/>
+        android:layout_marginTop="68dp" />
+
+    <Button
+        android:id="@+id/view_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/welcom_submit_report"
+        android:layout_alignLeft="@+id/welcom_submit_report"
+        android:layout_alignRight="@+id/welcom_submit_report"
+        android:layout_alignStart="@+id/welcom_submit_report"
+        android:layout_below="@+id/welcom_submit_report"
+        android:layout_marginTop="45dp"
+        android:text="@string/reports"
+        android:onClick="view_report"/>
 
 </RelativeLayout>

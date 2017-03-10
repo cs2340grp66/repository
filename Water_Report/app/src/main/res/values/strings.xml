@@ -30,4 +30,6 @@
     <string name="location">Location</string>
     <string name="type">Type</string>
     <string name="virus_ppm">Virus PPM</string>
+    <string name="reports">REPORTS</string>
+    <string name="submit_report">Submit Report</string>
 </resources>

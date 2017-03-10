@@ -54,10 +54,10 @@ public class ReportDetailActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 report_num.setText("Report Number: " + dataSnapshot.child("reportNum").getValue(String.class));
                 reporter.setText("Reporter Name: " + dataSnapshot.child("repoterName").getValue(String.class));
-//                report_time.setText("Report Date: " + dataSnapshot.child("date").getValue(String.class));
-//                water_type.setText("Water Type: " + dataSnapshot.child("type").getValue(String.class));
-//                location.setText("Water Location: " + dataSnapshot.child("location").getValue(String.class));
-//                condition.setText("Water Condition: " + dataSnapshot.child("condition").getValue(String.class));
+                report_time.setText("Report Date: " + dataSnapshot.child("date").getValue(String.class));
+                water_type.setText("Water Type: " + dataSnapshot.child("type").getValue(String.class));
+                location.setText("Water Location: " + dataSnapshot.child("location").getValue(String.class));
+                condition.setText("Water Condition: " + dataSnapshot.child("condition").getValue(String.class));
 
             }
 

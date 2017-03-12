@@ -106,6 +106,10 @@ public class WelcomActivity extends AppCompatActivity {
         startActivity(new Intent(WelcomActivity.this, ViewReports.class));
     }
 
+    public void map_button(View view) {
+        startActivity(new Intent(WelcomActivity.this, MapsActivity.class));
+    }
+
 
 
 }

@@ -66,4 +66,17 @@
         android:text="@string/reports"
         android:onClick="view_report"/>
 
+    <Button
+        android:id="@+id/map_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/view_report"
+        android:layout_alignLeft="@+id/view_report"
+        android:layout_alignRight="@+id/view_report"
+        android:layout_alignStart="@+id/view_report"
+        android:layout_below="@+id/view_report"
+        android:layout_marginTop="56dp"
+        android:text="@string/map"
+        android:onClick="map_button"/>
+
 </RelativeLayout>

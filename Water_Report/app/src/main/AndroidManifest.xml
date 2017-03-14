@@ -49,7 +49,9 @@
 
         <activity
             android:name=".controllers.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".controllers.Worker_Welcome_Activity" />
+        <activity android:name=".controllers.Manager_Welcome_Activity"></activity>
     </application>
 
 </manifest>

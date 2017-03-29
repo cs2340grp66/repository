@@ -1,9 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_worker_welcome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.weichen.water_report.controllers.Worker_Welcome_Activity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.weichen.water_report.controllers.WelcomActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:onClick="logout"
+        android:text="@string/logout"
+        tools:ignore="RelativeOverlap,RtlHardcoded" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_email"
+        tools:ignore="RtlHardcoded"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="edit_profile"
+        android:id="@+id/profile_button" />
+
+    <Button
+        android:text="@string/submit_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcom_submit_report"
+        android:onClick = "welcom_submit_report"
+        android:layout_below="@+id/user_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp" />
+
+    <Button
+        android:id="@+id/view_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/welcom_submit_report"
+        android:layout_alignLeft="@+id/welcom_submit_report"
+        android:layout_alignRight="@+id/welcom_submit_report"
+        android:layout_alignStart="@+id/welcom_submit_report"
+        android:layout_below="@+id/welcom_submit_report"
+        android:layout_marginTop="45dp"
+        android:text="@string/reports"
+        android:onClick="view_report"/>
+
+    <Button
+        android:id="@+id/map_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/view_report"
+        android:layout_alignLeft="@+id/view_report"
+        android:layout_alignRight="@+id/view_report"
+        android:layout_alignStart="@+id/view_report"
+        android:layout_below="@+id/view_report"
+        android:layout_marginTop="56dp"
+        android:text="@string/map"
+        android:onClick="map_button"/>
+
+    <Button
+        android:id="@+id/welcome_submit_purity_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcom_submit_report"
+        android:layout_centerHorizontal="true"
+        android:text="submit_purity_report" />
+
+</RelativeLayout>

@@ -1,10 +1,9 @@
 package com.example.weichen.water_report.controllers;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,11 +11,16 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.weichen.water_report.R;
-import com.example.weichen.water_report.model.User_Infor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,6 +35,11 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth loginAuth;
 
     private FirebaseAuth.AuthStateListener loginAuthListener;
+
+    private FirebaseUser user;
+    private DatabaseReference databaseReference;
+
+
 
 
     @Override
@@ -86,8 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
-                                Intent intents = new Intent(LoginActivity.this, WelcomActivity.class);
-                                startActivity(intents);
+                                login();
                             } else {
                                 Toast.makeText(LoginActivity.this, "Email and Password are not match!", Toast.LENGTH_LONG).show();
                             }
@@ -122,6 +130,34 @@ public class LoginActivity extends AppCompatActivity {
         if (loginAuthListener != null) {
             loginAuth.removeAuthStateListener(loginAuthListener);
         }
+    }
+
+
+    public void login(){
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(user.getUid());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String classes = dataSnapshot.child("classes").getValue(String.class);
+
+                if (classes.equals("USER")){
+                    startActivity(new Intent(LoginActivity.this, WelcomActivity.class));
+                } else if (classes.equals("WORKER")){
+                    startActivity(new Intent(LoginActivity.this, Worker_Welcome_Activity.class));
+                } else if (classes.equals("MANAGER")){
+                    startActivity(new Intent(LoginActivity.this, Manager_Welcome_Activity.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 }

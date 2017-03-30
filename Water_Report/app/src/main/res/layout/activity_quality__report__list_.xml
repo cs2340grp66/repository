@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.weichen.water_report.controllers.Quality_Report_LIst_Activity">
+
+    <ImageButton
+        android:id="@+id/goBack_from_quality_report_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/cast_expanded_controller_seekbar_track"
+        android:contentDescription=""
+        android:onClick="goBack_from_quality_report_list"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:ignore="ContentDescription" />
+
+    <ListView
+        android:id="@+id/quality_report_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/goBack_from_quality_report_list" />
+
+</RelativeLayout>

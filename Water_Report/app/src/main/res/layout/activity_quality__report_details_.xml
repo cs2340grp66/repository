@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.weichen.water_report.controllers.Quality_Report_details_Activity">
+
+    <TextView
+        android:id="@+id/qreport_condition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:layout_below="@+id/qreport_location"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/qreport_virus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/qreport_condition"
+        android:layout_marginTop="49dp"
+        android:text="TextView"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/qreport_contaminant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="31dp"
+        android:text="TextView"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/qreport_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/qreport_reportDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/qreport_reporter"
+        android:layout_marginTop="47dp"
+        android:text="TextView"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/goBack_from_quality_report_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        android:onClick="goBack_from_quality_report_detail"/>
+
+    <TextView
+        android:id="@+id/qreport_reportNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:layout_below="@+id/goBack_from_quality_report_detail"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/qreport_reporter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:layout_below="@+id/qreport_reportNum"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

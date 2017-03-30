@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ViewReports extends AppCompatActivity {
+public class Quality_Report_LIst_Activity extends AppCompatActivity {
 
     private ListView listView;
 
@@ -34,15 +34,14 @@ public class ViewReports extends AppCompatActivity {
 
     public static String clickedItem;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_reports);
+        setContentView(R.layout.activity_quality__report__list_);
 
-        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://water-report-cf485.firebaseio.com/reports");
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://water-report-cf485.firebaseio.com/quality_report");
 
-        listView = (ListView) findViewById(R.id.report_list);
+        listView = (ListView) findViewById(R.id.quality_report_list);
 
         final ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, report);
 
@@ -52,7 +51,7 @@ public class ViewReports extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()){
-                    String name = dataSnapshot.child(child.getKey()).child("repoterName").getValue(String.class);
+                    String name = dataSnapshot.child(child.getKey()).child("reporter").getValue(String.class);
                     String date = dataSnapshot.child(child.getKey()).child("date").getValue(String.class);
                     String value = "Report #" + child.getKey() + "\n" +"Reporter: " + name +"\nDate: " + date;
                     report.add(value);
@@ -72,25 +71,19 @@ public class ViewReports extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 clickedItem =(String) (listView.getItemAtPosition(position));
-                String index = Character.toString(clickedItem.charAt(8));
-                Intent i = new Intent(getApplicationContext(), ReportDetailActivity.class);
-                i.putExtra("index", index);
+                String indeX = Character.toString(clickedItem.charAt(8));
+                Intent i = new Intent(getApplicationContext(), Quality_Report_details_Activity.class);
+                i.putExtra("indeX", indeX);
                 startActivity(i);
             }
         });
-
-
-
-
-
     }
-
 
     /**
      * using to go back from viewReport activity by classes
      * @param view
      */
-    public void goBack_from_viewReport(View view) {
+    public void goBack_from_quality_report_list(View view) {
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(user.getUid());
 
@@ -101,14 +94,13 @@ public class ViewReports extends AppCompatActivity {
                 String classes = dataSnapshot.child("classes").getValue(String.class);
 
                 if (classes.equals("USER")){
-                    startActivity(new Intent(ViewReports.this, WelcomActivity.class));
+                    startActivity(new Intent(Quality_Report_LIst_Activity.this, WelcomActivity.class));
                 } else if (classes.equals("WORKER")){
-                    startActivity(new Intent(ViewReports.this, Worker_Welcome_Activity.class));
+                    startActivity(new Intent(Quality_Report_LIst_Activity.this, Worker_Welcome_Activity.class));
                 } else if (classes.equals("MANAGER")){
-                    startActivity(new Intent(ViewReports.this, Manager_Welcome_Activity.class));
+                    startActivity(new Intent(Quality_Report_LIst_Activity.this, Manager_Welcome_Activity.class));
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

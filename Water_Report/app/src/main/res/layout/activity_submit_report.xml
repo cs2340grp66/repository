@@ -16,16 +16,6 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/sub_type"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/sub_location"
-        android:layout_alignStart="@+id/sub_location" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
         android:id="@+id/sub_location"
         tools:ignore="RelativeOverlap"
         android:layout_below="@+id/textView"
@@ -45,52 +35,54 @@
         android:text="@string/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
         android:id="@+id/textView3"
         android:layout_below="@+id/sub_location"
-        android:layout_alignLeft="@+id/sub_type"
-        android:layout_alignStart="@+id/sub_type" />
+        android:layout_alignStart="@+id/sub_location"
+        android:layout_marginTop="46dp" />
 
     <TextView
         android:text="Condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
-        android:layout_marginTop="78dp"
-        android:layout_below="@+id/sub_type"
-        android:layout_alignLeft="@+id/sub_type"
-        android:layout_alignStart="@+id/sub_type" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/sub_condition"
-        android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
+        android:layout_marginTop="83dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="?android:attr/actionModeCloseDrawable"
         android:id="@+id/go_back_r_button_submission"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView"
         android:contentDescription=""
-        android:onClick = "go_back_r_button_submission"/>
+        android:onClick = "go_back_r_button_submission"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/comfirm_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sub_condition"
-        android:layout_marginTop="19dp"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
         android:text="Comfirm"
-        android:onClick="confirm_report"/>
+        android:onClick="confirm_report"
+        android:layout_marginBottom="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/water_type_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignEnd="@+id/sub_location" />
+
+    <Spinner
+        android:id="@+id/water_condition_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/water_type_spinner"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_below="@+id/textView4" />
 
 </RelativeLayout>

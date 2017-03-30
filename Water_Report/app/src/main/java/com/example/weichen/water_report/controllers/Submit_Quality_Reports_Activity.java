@@ -9,14 +9,13 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.weichen.water_report.R;
-import com.example.weichen.water_report.model.Report_Infor;
+import com.example.weichen.water_report.model.Quality_Report;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,14 +26,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
-public class SubmitReport extends AppCompatActivity {
+public class Submit_Quality_Reports_Activity extends AppCompatActivity {
 
+    private ImageButton goBack;
     private EditText location;
-    private Spinner type;
-    private Spinner condition;
-    private String userName;
-    private String reportNum;
-    private String date;
+    private EditText virus_PPM;
+    private EditText contaminant_PPM;
+    private Spinner conditions;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
@@ -42,74 +40,63 @@ public class SubmitReport extends AppCompatActivity {
     private FirebaseUser user;
 
 
-    private ImageButton goBack_submission;
-    private Button submitReport;
+    private Quality_Report quality_report;
 
-    private Report_Infor report;
-
-    private static String[] waterType = new String[]{"Bottled", "Well","Stream","Lake","Spring","Other"};
-    private static String[] waterCondition = new String[]{"Waste","Treatable-Clear","Treatable-Muddy","Potable"};
+    private static String[] conditionSpinner = new String[]{"Safe", "Treatable", "Unsafe"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_submit_report);
+        setContentView(R.layout.activity_submit__quality__reports_);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
         if (firebaseAuth.getCurrentUser() == null) {
             finish();
-            startActivity(new Intent(SubmitReport.this, InitialActivity.class));
         }
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         userFirebase = FirebaseAuth.getInstance().getCurrentUser();
 
+        goBack = (ImageButton) findViewById(R.id.goBack_submit_quality_reports);
+        location = (EditText) findViewById(R.id.location_quality_reports);
+        virus_PPM = (EditText) findViewById(R.id.virus_PPM_quality_report);
+        contaminant_PPM = (EditText) findViewById(R.id.contaminant_PPM);
 
-
-        location = (EditText) findViewById(R.id.sub_location);
-        if (location.getText().toString().length() == 0)
-            location.setError("Location can't be empty!");
-
-        type = (Spinner) findViewById(R.id.water_type_spinner);
-        ArrayAdapter<String> typeAdpt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, waterType);
-        typeAdpt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        type.setAdapter(typeAdpt);
-
-
-        condition = (Spinner) findViewById(R.id.water_condition_spinner);
-        ArrayAdapter<String> condAdpt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, waterCondition);
-        condAdpt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        condition.setAdapter(condAdpt);
-
-        submitReport = (Button) findViewById(R.id.comfirm_report);
-        goBack_submission = (ImageButton) findViewById(R.id.go_back_r_button_submission);
+        conditions = (Spinner) findViewById(R.id.condition_spinner_quality_report);
+        ArrayAdapter<String> conditionAdpt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, conditionSpinner);
+        conditionAdpt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        conditions.setAdapter(conditionAdpt);
 
     }
 
 
+    /**
+     * use to submit the quality report
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void confirm_report(View view) {
-        final String _location, _type, _condition, _date;
+    public void submit_quality_report(View view) {
+        final String _date, _location, _virus_PPM, _contaminant_PPM, _conditions;
 
         _location = location.getText().toString().trim();
-        _type = (String) type.getSelectedItem();
-        _condition = (String) condition.getSelectedItem();
+        _virus_PPM = virus_PPM.getText().toString().trim();
+        _conditions = (String) conditions.getSelectedItem();
+        _contaminant_PPM = contaminant_PPM.getText().toString().trim();
 
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         Calendar calobj = Calendar.getInstance();
         _date = (String)df.format(calobj.getTime());
 
-        report = new Report_Infor(_location, _type, _condition, _date, " ", " ");
+        quality_report = new Quality_Report(_date, "", "", _location, _conditions, _virus_PPM, _contaminant_PPM);
 
-        if (_condition.length() > 0 && _type.length() > 0 && _condition.length() > 0 ){
+        if (_conditions.length() > 0 && _virus_PPM.length() > 0 && _location.length() > 0 && _contaminant_PPM.length() > 0 ){
 
             databaseReference = databaseReference.child("user").child(userFirebase.getUid());
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String name = dataSnapshot.child("userName").getValue(String.class);
-                    report.setRepoterName(name);
+                    quality_report.setRepoterName(name);
                 }
 
                 @Override
@@ -118,16 +105,15 @@ public class SubmitReport extends AppCompatActivity {
                 }
             });
 
-            databaseReference = databaseReference.getParent().getParent().child("reports");
+            databaseReference = databaseReference.getParent().getParent().child("quality_report");
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String num = Long.toString(dataSnapshot.getChildrenCount() + 1);
-                    report.setReportNum(num);
-                    databaseReference.child(num).setValue(report);
-                    Toast.makeText(SubmitReport.this, "Submit Report Successfully", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(SubmitReport.this, WelcomActivity.class));
-
+                    quality_report.setReportNum(num);
+                    databaseReference.child(num).setValue(quality_report);
+                    Toast.makeText(Submit_Quality_Reports_Activity.this, "Submit Report Successfully", Toast.LENGTH_LONG).show();
+                    goBack_submit_quality_reports(null);
                 }
 
                 @Override
@@ -136,19 +122,16 @@ public class SubmitReport extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(SubmitReport.this, "Submit Report Fail! \nOne of input is empty. ", Toast.LENGTH_LONG).show();
+            Toast.makeText(Submit_Quality_Reports_Activity.this, "Submit Report Fail! \nOne of input is empty. ", Toast.LENGTH_LONG).show();
         }
 
 
     }
 
-
     /**
-     * Code for the back button on the registration
-     *
-     * @param view
+     * go back to welcome activity
      */
-    public void go_back_r_button_submission(View view) {
+    public void goBack_submit_quality_reports(View view) {
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(user.getUid());
 
@@ -159,11 +142,11 @@ public class SubmitReport extends AppCompatActivity {
                 String classes = dataSnapshot.child("classes").getValue(String.class);
 
                 if (classes.equals("USER")){
-                    startActivity(new Intent(SubmitReport.this, WelcomActivity.class));
+                    startActivity(new Intent(Submit_Quality_Reports_Activity.this, WelcomActivity.class));
                 } else if (classes.equals("WORKER")){
-                    startActivity(new Intent(SubmitReport.this, Worker_Welcome_Activity.class));
+                    startActivity(new Intent(Submit_Quality_Reports_Activity.this, Worker_Welcome_Activity.class));
                 } else if (classes.equals("MANAGER")){
-                    startActivity(new Intent(SubmitReport.this, Manager_Welcome_Activity.class));
+                    startActivity(new Intent(Submit_Quality_Reports_Activity.this, Manager_Welcome_Activity.class));
                 }
             }
 
@@ -173,4 +156,8 @@ public class SubmitReport extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 }

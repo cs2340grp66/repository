@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.weichen.water_report.controllers.Submit_Quality_Reports_Activity">
+
+    <ImageButton
+        android:id="@+id/goBack_submit_quality_reports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="?attr/homeAsUpIndicator"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:onClick="goBack_submit_quality_reports"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="" />
+
+    <EditText
+        android:id="@+id/location_quality_reports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/locationS"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="63dp"
+        tools:ignore="MissingConstraints"
+        android:layout_below="@+id/goBack_submit_quality_reports"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_marginTop="23dp" />
+
+    <Spinner
+        android:id="@+id/condition_spinner_quality_report"
+        android:layout_width="215dp"
+        android:layout_height="37dp"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="168dp"
+        tools:ignore="MissingConstraints"
+        android:layout_below="@+id/textView5"
+        android:layout_alignStart="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/conditionS"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="146dp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/location_quality_reports"
+        android:layout_toEndOf="@+id/goBack_submit_quality_reports" />
+
+    <EditText
+        android:id="@+id/virus_PPM_quality_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/virus_ppm_"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="251dp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginBottom="49dp"
+        android:layout_above="@+id/contaminant_PPM"
+        android:layout_alignStart="@+id/condition_spinner_quality_report" />
+
+    <EditText
+        android:id="@+id/contaminant_PPM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/contaminant_ppm"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="344dp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginBottom="42dp"
+        android:layout_above="@+id/submit_quality_report"
+        android:layout_alignStart="@+id/virus_PPM_quality_report" />
+
+    <Button
+        android:id="@+id/submit_quality_report"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:text="@string/submit_quality_report"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="423dp"
+        tools:ignore="MissingConstraints"
+        android:onClick="submit_quality_report"
+        android:layout_marginBottom="17dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

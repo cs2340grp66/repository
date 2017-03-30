@@ -37,7 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goBack_from_ReportDetailActivity"
-        tools:ignore="ContentDescription" />
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:ignore="ContentDescription"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/water_condition"

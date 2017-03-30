@@ -83,6 +83,28 @@ public class PersonalProfileActivity extends AppCompatActivity {
      * @param view
      */
     public void goBack_from_personal_profile(View view) {
-        startActivity(new Intent(PersonalProfileActivity.this, WelcomActivity.class));
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(user.getUid());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String classes = dataSnapshot.child("classes").getValue(String.class);
+
+                if (classes.equals("USER")){
+                    startActivity(new Intent(PersonalProfileActivity.this, WelcomActivity.class));
+                } else if (classes.equals("WORKER")){
+                    startActivity(new Intent(PersonalProfileActivity.this, Worker_Welcome_Activity.class));
+                } else if (classes.equals("MANAGER")){
+                    startActivity(new Intent(PersonalProfileActivity.this, Manager_Welcome_Activity.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_worker_welcome"
     android:layout_width="match_parent"
@@ -20,7 +21,9 @@
         android:layout_alignParentRight="true"
         android:onClick="logout"
         android:text="@string/logout"
-        tools:ignore="RelativeOverlap,RtlHardcoded" />
+        tools:ignore="MissingConstraints,RelativeOverlap,RtlHardcoded"
+        tools:layout_editor_absoluteY="431dp"
+        tools:layout_editor_absoluteX="268dp" />
 
 
     <TextView
@@ -42,7 +45,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:onClick="edit_profile"
-        android:id="@+id/profile_button" />
+        android:id="@+id/profile_button"
+        tools:layout_editor_absoluteY="431dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:text="@string/submit_report"
@@ -50,42 +56,51 @@
         android:layout_height="wrap_content"
         android:id="@+id/welcom_submit_report"
         android:onClick = "welcom_submit_report"
-        android:layout_below="@+id/user_email"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp" />
+        tools:layout_editor_absoluteY="107dp"
+        tools:layout_editor_absoluteX="59dp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginBottom="37dp"
+        android:layout_above="@+id/welcome_submit_purity_report"
+        android:layout_alignEnd="@+id/map_button"
+        android:layout_marginEnd="21dp" />
 
     <Button
         android:id="@+id/view_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/welcom_submit_report"
-        android:layout_alignLeft="@+id/welcom_submit_report"
-        android:layout_alignRight="@+id/welcom_submit_report"
-        android:layout_alignStart="@+id/welcom_submit_report"
-        android:layout_below="@+id/welcom_submit_report"
-        android:layout_marginTop="45dp"
         android:text="@string/reports"
-        android:onClick="view_report"/>
+        android:onClick="view_report"
+        tools:layout_editor_absoluteY="107dp"
+        tools:layout_editor_absoluteX="196dp"
+        tools:ignore="MissingConstraints"
+        android:layout_alignBaseline="@+id/welcom_submit_report"
+        android:layout_alignBottom="@+id/welcom_submit_report"
+        android:layout_toEndOf="@+id/welcom_submit_report" />
 
     <Button
         android:id="@+id/map_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/view_report"
-        android:layout_alignLeft="@+id/view_report"
-        android:layout_alignRight="@+id/view_report"
-        android:layout_alignStart="@+id/view_report"
-        android:layout_below="@+id/view_report"
-        android:layout_marginTop="56dp"
         android:text="@string/map"
-        android:onClick="map_button"/>
+        android:onClick="map_button"
+        tools:layout_editor_absoluteY="321dp"
+        tools:layout_editor_absoluteX="121dp"
+        tools:ignore="MissingConstraints"
+        android:layout_below="@+id/welcome_submit_purity_report"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp" />
 
     <Button
         android:id="@+id/welcome_submit_purity_report"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/welcom_submit_report"
-        android:layout_centerHorizontal="true"
-        android:text="submit_purity_report" />
+        android:layout_width="217dp"
+        android:layout_height="41dp"
+        android:text="@string/submit_purity_report"
+        android:onClick="welcom_submit_purity_report"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/welcom_submit_report"
+        android:layout_alignEnd="@+id/view_report"
+        tools:layout_editor_absoluteY="184dp"
+        tools:layout_editor_absoluteX="60dp"
+        tools:ignore="MissingConstraints" />
 
 </RelativeLayout>

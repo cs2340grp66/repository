@@ -1,11 +1,9 @@
 package com.example.weichen.water_report.controllers;
 
 import android.content.Intent;
-import android.icu.lang.UCharacterEnums;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,18 +14,17 @@ import android.widget.Toast;
 
 import com.example.weichen.water_report.R;
 import com.example.weichen.water_report.model.User_Infor;
-
-import com.example.weichen.water_report.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -39,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference databaseReference;
+    private FirebaseUser userFB;
 
     private Button create_Account_r_Button;
     private ImageButton goBack;
@@ -137,7 +135,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 FirebaseUser fb_user = FirebaseAuth.getInstance().getCurrentUser();
                                 databaseReference.child("user").child(fb_user.getUid()).setValue(user);
                                 Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(RegisterActivity.this, WelcomActivity.class));
+                                login();
                             } else {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                     _userName.setError("User with this email already exist.");
@@ -151,6 +149,35 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             _reEnterPW.setError("Re-enter Password are not match ");
         }
+    }
+
+    /**
+     * using to determent which welcome activity need to go
+     */
+    public void login() {
+        userFB = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(userFB.getUid());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String classes = dataSnapshot.child("classes").getValue(String.class);
+
+                if (classes.equals("USER")) {
+                    startActivity(new Intent(RegisterActivity.this, WelcomActivity.class));
+                } else if (classes.equals("WORKER")) {
+                    startActivity(new Intent(RegisterActivity.this, Worker_Welcome_Activity.class));
+                } else if (classes.equals("MANAGER")) {
+                    startActivity(new Intent(RegisterActivity.this, Manager_Welcome_Activity.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
  }

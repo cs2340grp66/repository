@@ -15,6 +15,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+
 public class Worker_Welcome_Activity extends AppCompatActivity {
     private Button logout;
     private Button edit_profile;
@@ -97,8 +99,12 @@ public class Worker_Welcome_Activity extends AppCompatActivity {
         startActivity(new Intent(Worker_Welcome_Activity.this, SubmitReport.class));
     }
 
+    /**
+     * move to Submit_Quality_Reports_Activity
+     * @param view
+     */
     public void welcom_submit_purity_report (View view) {
-        startActivity(new Intent(Worker_Welcome_Activity.this, SubmitPurityReport.class));
+        startActivity(new Intent(Worker_Welcome_Activity.this, Submit_Quality_Reports_Activity.class));
     }
 
     /**
@@ -109,6 +115,10 @@ public class Worker_Welcome_Activity extends AppCompatActivity {
         startActivity(new Intent(Worker_Welcome_Activity.this, ViewReports.class));
     }
 
+    /**
+     * move back to google map
+     * @param view
+     */
     public void map_button(View view) {
         startActivity(new Intent(Worker_Welcome_Activity.this, MapsActivity.class));
     }

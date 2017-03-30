@@ -34,4 +34,10 @@
     <string name="submit_report">Submit Report</string>
     <string name="title_activity_maps">Map</string>
     <string name="map">MAP</string>
+    <string name="contaminant_ppm">Contaminant PPM</string>
+    <string name="conditionS">Condition</string>
+    <string name="locationS">Location</string>
+    <string name="submit_quality_report">Submit</string>
+    <string name="virus_ppm_">Virus PPM</string>
+    <string name="submit_purity_report">submit_purity_report</string>
 </resources>

@@ -126,7 +126,7 @@ public class SubmitReport extends AppCompatActivity {
                     report.setReportNum(num);
                     databaseReference.child(num).setValue(report);
                     Toast.makeText(SubmitReport.this, "Submit Report Successfully", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(SubmitReport.this, WelcomActivity.class));
+                    go_back_r_button_submission(null);
 
                 }
 

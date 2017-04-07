@@ -55,7 +55,9 @@
         <activity android:name=".controllers.Manager_Welcome_Activity" />
         <activity android:name=".controllers.Submit_Quality_Reports_Activity" />
         <activity android:name=".controllers.Quality_Report_LIst_Activity" />
-        <activity android:name=".controllers.Quality_Report_details_Activity"></activity>
+        <activity android:name=".controllers.Quality_Report_details_Activity" />
+        <activity android:name=".controllers.Historical_report_Activity" />
+        <activity android:name=".controllers.GraphActivity"></activity>
     </application>
 
 </manifest>

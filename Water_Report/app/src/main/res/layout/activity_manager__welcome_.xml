@@ -85,8 +85,7 @@
         tools:layout_editor_absoluteX="148dp"
         tools:ignore="MissingConstraints"
         android:layout_above="@+id/profile_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="63dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/welcome_submit_purity_report"
@@ -112,6 +111,19 @@
         tools:ignore="HardcodedText,MissingConstraints"
         android:layout_marginTop="16dp"
         android:layout_below="@+id/welcome_submit_purity_report"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+
+        />
+
+    <Button
+        android:id="@+id/historical_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/map_button"
+        android:layout_alignEnd="@+id/view_quality_report"
+        android:layout_alignStart="@+id/view_quality_report"
+        android:layout_marginBottom="16dp"
+        android:text="HISTORICAL REPORT"
+        android:onClick="historical_report"/>
 
 </RelativeLayout>

@@ -131,4 +131,8 @@ public class Manager_Welcome_Activity extends AppCompatActivity {
     public void view_quality_report(View view) {
         startActivity(new Intent(Manager_Welcome_Activity.this, Quality_Report_LIst_Activity.class));
     }
+
+    public void historical_report(View view){
+        startActivity(new Intent(Manager_Welcome_Activity.this, Historical_report_Activity.class));
+    }
 }
